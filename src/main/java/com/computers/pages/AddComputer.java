@@ -1,4 +1,4 @@
-package com.computers;
+package com.computers.pages;
 
 import org.openqa.selenium.WebDriver;
 
@@ -9,7 +9,7 @@ public class AddComputer extends AddOrEditComputer {
         super(driver);
     }
 
-    public ComputerDatabase succefullyCreateComputer() {
+    public ComputerDatabase createThisComputer() {
         return this.submit();
     }
 

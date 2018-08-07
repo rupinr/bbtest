@@ -1,4 +1,4 @@
-package com.computers;
+package com.computers.locators;
 
 public class Replacements {
     public static final String I = "{I}";

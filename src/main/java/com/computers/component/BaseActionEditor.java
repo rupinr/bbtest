@@ -1,20 +1,15 @@
-package com.computers;
-
+package com.computers.component;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class BasePage {
+public class BaseActionEditor {
 
-    public WebDriver getDriver() {
-        return driver;
-    }
-
-    private WebDriver driver;
+    protected WebDriver driver;
 
 
-    public BasePage(WebDriver driver) {
+    public BaseActionEditor(WebDriver driver) {
         this.driver = driver;
     }
 
