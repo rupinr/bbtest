@@ -9,12 +9,15 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static com.computers.support.Priority.*;
+
 public class ComputerDatabaseTest extends BaseTest {
 
 
     @Test
-    //TC Annotion..
-
+    @TestCase(id = "TC001",
+            desciption = "Ensure that on searching for a valid computer user is presented with the matching result"
+            , priority = HIGH)
     public void verifyThatUserIsPresentedWithSearchResultsForAValidQuery() {
         String computerName = "Atari ST";
         DataGrid dataGrid = this.openBrowser()
@@ -27,9 +30,9 @@ public class ComputerDatabaseTest extends BaseTest {
     }
 
     @Test
-    //TC Annotion..
-
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
+    @TestCase(id = "TC002",
+            desciption = "Ensure that on searching for a valid name that matches more than one computer , user is presented with the matching results",
+            priority = HIGH)
     public void verifyThatUserIsPresentedWithMultipleSearchResultsIfThereAreMoreThanOneMatchingEntry() {
         String toSearchComputerName = "Atari";
         ComputerDatabase computerDatabase = this.openBrowser()
@@ -49,8 +52,9 @@ public class ComputerDatabaseTest extends BaseTest {
                 .forEach(computerName -> Assert.assertTrue(computerName.contains(computerName)));
     }
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
+    @TestCase(id = "TC003", desciption = "Ensure that that search functionality is not considering the Case  of the search text",
+            priority = MEDIUM)
     public void verifyThatFilterComputersAreNotCaseSensitive() {
         String upperCase = "ASC";
         String lowerCase = "asc";
@@ -74,8 +78,10 @@ public class ComputerDatabaseTest extends BaseTest {
         Assert.assertEquals(upperCaseComputerNames, lowerCaseComputerNames);
     }
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
+    @TestCase(id = "TC004",
+            desciption = "Ensure that that if search is not able to match any text, a proper error message is shown.",
+            priority = MEDIUM)
     public void verifyThatAMessageIsShownOnInvalidSearch() {
         String searchText = "THIS#$@#$COMPUTER";
         String message = this.openBrowser()
@@ -89,8 +95,10 @@ public class ComputerDatabaseTest extends BaseTest {
 
     }
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
+    @TestCase(id = "TC005",
+            desciption = "Ensure that empty fields are shown as a '-' in the grid.",
+            priority = LOW)
     public void verifyThatEmptyPropertiesAreDisplayedCorrectlyInGrid() {
         String computerName = "ASCI Thors Hammer";
         DataGrid dataGrid = this.openBrowser()
@@ -104,8 +112,10 @@ public class ComputerDatabaseTest extends BaseTest {
         Assert.assertEquals(dataGrid.getDiscontinuedByComputerName(computerName), "-");
     }
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
+    @TestCase(id = "SAMPLE00",
+            priority = HIGH,
+            desciption = "Verify that the grid has columns for all computer properties")
     public void verifyHeaderTextForColumns() {
         DataGrid dataGrid = this.openBrowser()
                 .loadComputerDataBaseHome()

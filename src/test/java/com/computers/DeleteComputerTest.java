@@ -4,6 +4,7 @@ import com.computers.data.Computers;
 import com.computers.model.Computer;
 import com.computers.pages.AddComputer;
 import com.computers.pages.ComputerDatabase;
+import static com.computers.support.Priority.*;
 import com.computers.support.annotations.TestCase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,8 +12,9 @@ import org.testng.annotations.Test;
 public class DeleteComputerTest extends ComputerHelper {
 
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
+    @TestCase(id = "TC010", priority = HIGH,
+            desciption = "Verify that user is able to delete and existing computer")
     public void verifyThatUserIsAbleDeleteComputer() {
 
         ComputerDatabase computerDatabase = this.openBrowser()

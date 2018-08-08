@@ -1,15 +1,17 @@
 package com.computers.support.annotations;
 
 
+import com.computers.support.Priority;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TestCase {
 
-    String ID() default "";
+    String id() default "";
 
-    String priority() default "";
+    Priority priority() ;
 
     String desciption() default "";
 }

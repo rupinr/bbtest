@@ -4,14 +4,17 @@ import com.computers.data.Computers;
 import com.computers.model.Computer;
 import com.computers.pages.AddComputer;
 import com.computers.pages.ComputerDatabase;
+import com.computers.pages.DataGrid;
 import com.computers.pages.EditComputer;
 import com.computers.support.annotations.TestCase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.computers.support.Priority.HIGH;
+
 public class EditComputerTest extends ComputerHelper {
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
+    @TestCase(id = "TC012", priority = HIGH, desciption = "Verify that user is able to edit a computer")
     @Test
     public void verifyThatUserIsAbleEditComputer() {
 
@@ -35,7 +38,14 @@ public class EditComputerTest extends ComputerHelper {
 
         Assert.assertEquals(message, "Done! Computer " + computer2.getComputerName() + " has been updated");
 
-        //Todo assert grid data.
+        DataGrid dataGrid = computerDatabase
+                .editFilterByName(computer2.getComputerName())
+                .clickOnFilterByName()
+                .getDataGrid();
+
+        Assert.assertEquals(dataGrid.getIntroducedByComputerName(computer2.getComputerName()), convertDateToGridForm(computer2.getIntroduced()));
+        Assert.assertEquals(dataGrid.getDiscontinuedByComputerName(computer2.getComputerName()), convertDateToGridForm(computer2.getDiscontinued()));
+        Assert.assertEquals(dataGrid.getByCompanyByComputerName(computer2.getComputerName()), computer2.getCompany());
 
     }
 }

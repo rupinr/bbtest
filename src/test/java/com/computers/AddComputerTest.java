@@ -10,11 +10,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static com.computers.data.ComputerDataValidity.*;
+import static com.computers.support.Priority.HIGH;
 
 public class AddComputerTest extends ComputerHelper {
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
+    @TestCase(id = "TC007",
+            priority = HIGH,
+            desciption = "Verify that user is able to add a Computer by entering all Mandatory details.")
     public void verifyAddAComputerPage() {
 
         ComputerDatabase computerDatabase = this.openBrowser()
@@ -42,7 +45,8 @@ public class AddComputerTest extends ComputerHelper {
         Assert.assertTrue(computerDatabase.isInComputerDataPage());
     }
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
+    @TestCase(id = "TC008", priority = HIGH,
+            desciption = "Verify that user is able to add a Computer by entering all mandatory details.")
     @Test
     public void verifyThatUserIsAbleToAddAComputer() {
         ComputerDatabase computerDatabase = this.openBrowser()
@@ -55,15 +59,16 @@ public class AddComputerTest extends ComputerHelper {
         addComputer.submit();
 
 
-        Assert.assertEquals(computerDatabase.getMessage(), "Done! Computer "+computer.getComputerName()+" has been created");
+        Assert.assertEquals(computerDatabase.getMessage(), "Done! Computer " + computer.getComputerName() + " has been created");
 
 
         Assert.assertTrue(computerDatabase.isInComputerDataPage());
 
     }
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
+    @TestCase(id = "TC009", priority = HIGH,
+            desciption = "Verify that user is able to search an added computer")
     public void verifyThatUserIsAbleSearchAnAddedComputer() {
         ComputerDatabase computerDatabase = this.openBrowser()
                 .loadComputerDataBaseHome();
@@ -82,7 +87,8 @@ public class AddComputerTest extends ComputerHelper {
 
     }
 
-    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
+    @TestCase(id = "TC011", priority = HIGH,
+            desciption = "Verify that proper message is shown when user tries to Enter invalid while adding a Computer")
     @Test(dataProvider = "invalidComputerArray")
     public void verifyThatErrorMessageIsShownWhenUserTriesToAddComputerWIthInvalidData(ComputerData computerData) {
         ComputerDatabase computerDatabase = this.openBrowser()
