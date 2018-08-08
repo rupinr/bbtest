@@ -18,7 +18,7 @@ public class DeleteComputerTest extends ComputerHelper {
         ComputerDatabase computerDatabase = this.openBrowser()
                 .loadComputerDataBaseHome();
 
-        Computer computer = Computers.getTestComputerWithAllDetailsFilledRandomName();
+        Computer computer = Computers.validDetails();
         AddComputer addComputer = computerDatabase.openAddComputerPage();
         this.enterComputerDetails(computer, addComputer);
         addComputer.submit();

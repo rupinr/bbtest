@@ -123,6 +123,5 @@ public class AddComputerTest extends ComputerHelper {
         boolean isValidIntroduced;
         boolean isValidDiscontinued;
     }
-    //TODO paginamtion...
 
 }
