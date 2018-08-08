@@ -48,14 +48,14 @@ public class AddComputerTest extends ComputerHelper {
         ComputerDatabase computerDatabase = this.openBrowser()
                 .loadComputerDataBaseHome();
 
-        Computer computer = Computers.validDetails();
+        Computer computer = Computers.validComputer_1();
 
         AddComputer addComputer = computerDatabase.openAddComputerPage();
         this.enterComputerDetails(computer, addComputer);
         addComputer.submit();
 
 
-        Assert.assertEquals(computerDatabase.getMessage(), "Done! Computer TEST_COMPUTERb73d8 has been created");
+        Assert.assertEquals(computerDatabase.getMessage(), "Done! Computer "+computer.getComputerName()+" has been created");
 
 
         Assert.assertTrue(computerDatabase.isInComputerDataPage());
@@ -68,7 +68,7 @@ public class AddComputerTest extends ComputerHelper {
         ComputerDatabase computerDatabase = this.openBrowser()
                 .loadComputerDataBaseHome();
 
-        Computer computer = Computers.validDetails();
+        Computer computer = Computers.validComputer_1();
         AddComputer addComputer = computerDatabase.openAddComputerPage();
         this.enterComputerDetails(computer, addComputer);
         addComputer.submit();

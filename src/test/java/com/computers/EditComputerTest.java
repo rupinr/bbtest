@@ -4,16 +4,16 @@ import com.computers.data.Computers;
 import com.computers.model.Computer;
 import com.computers.pages.AddComputer;
 import com.computers.pages.ComputerDatabase;
+import com.computers.pages.EditComputer;
 import com.computers.support.annotations.TestCase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class DeleteComputerTest extends ComputerHelper {
-
+public class EditComputerTest extends ComputerHelper {
 
     @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
-    public void verifyThatUserIsAbleDeleteComputer() {
+    public void verifyThatUserIsAbleEditComputer() {
 
         ComputerDatabase computerDatabase = this.openBrowser()
                 .loadComputerDataBaseHome();
@@ -27,10 +27,15 @@ public class DeleteComputerTest extends ComputerHelper {
         String computerName = computer.getComputerName();
         computerDatabase.editFilterByName(computerName).clickOnFilterByName();
 
-        String message = computerDatabase.getDataGrid().openEditComputerByName(computerName)
-                .deleteThisComputer().getMessage();
+        EditComputer editComputer = computerDatabase.getDataGrid().openEditComputerByName(computerName);
 
-        Assert.assertEquals(message, "Done! Computer has been deleted");
+        Computer computer2 = Computers.validComputer_2();
+        this.enterComputerDetails(computer2, editComputer);
+        String message = editComputer.saveThisComputer().getMessage();
+
+        Assert.assertEquals(message, "Done! Computer " + computer2.getComputerName() + " has been updated");
+
+        //Todo assert grid data.
 
     }
 }

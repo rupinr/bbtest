@@ -6,12 +6,21 @@ import java.util.UUID;
 
 public class Computers {
 
-    public static Computer validDetails() {
+    public static Computer validComputer_1() {
         return new Computer.ComputerBuilder()
                 .withComputerName("TEST_COMPUTER" + UUID.randomUUID().toString().substring(0, 5))
                 .withIntroduced("1998-10-10")
                 .withDiscontinued("2010-10-10")
                 .withCompany("IBM")
+                .build();
+    }
+
+    public static Computer validComputer_2() {
+        return new Computer.ComputerBuilder()
+                .withComputerName("TEST_COMPUTER" + UUID.randomUUID().toString().substring(0, 5))
+                .withIntroduced("1999-12-11")
+                .withDiscontinued("2011-05-05")
+                .withCompany("RCA")
                 .build();
     }
 

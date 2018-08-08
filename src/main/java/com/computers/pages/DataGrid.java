@@ -17,7 +17,7 @@ public class DataGrid extends BasePage {
     private static final String XPATH_GENERIC_CELL_BY_COMPUTER_NAME = "//*[contains(@class,'computers')]//a[contains(text(),'{I}')]/../../td[{II}]";
     private static final String XPATH_COMPUTER_NAME_CELL = "//*[contains(@class,'computers')]//td[1]/a";
     private static final String XPATH_EMPTY_MESSAGE = "//*[@class='well']/em";
-    private static final String XPATH_COMMON_HEADER = "//th[contains(@class,'header')]/a[{I}]";
+    private static final String XPATH_COMMON_HEADER = "(//th[contains(@class,'header')]/a)[{}]";
 
     private BaseActionEditor editor;
 
@@ -26,7 +26,7 @@ public class DataGrid extends BasePage {
         this.editor = new BaseActionEditor(driver);
     }
 
-    public EditComputer clickOnEditByComputerName(String computerName) {
+    public EditComputer openEditComputerByName(String computerName) {
         this.editor.clickOnElementByXpath(XPATH_COMPUTER_BY_NAME.replace(I, computerName));
         return new EditComputer(driver);
     }
@@ -76,9 +76,4 @@ public class DataGrid extends BasePage {
         return getHeaderText("4");
     }
 
-    public EditComputer openComputerDetailsByNameopenComputerDetailsByName(String computerName) {
-        this.driver.findElement(By.xpath(XPATH_COMPUTER_BY_NAME.replace(I, computerName)))
-                .click();
-        return new EditComputer(this.driver);
-    }
 }
