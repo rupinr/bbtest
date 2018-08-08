@@ -16,6 +16,7 @@ public class DataGrid extends BasePage {
     private static final String XPATH_COMPUTER_BY_NAME = "//*[contains(@class,'computers')]//a[contains(text(),'{I}')]";
     private static final String XPATH_GENERIC_CELL_BY_COMPUTER_NAME = "//*[contains(@class,'computers')]//a[contains(text(),'{I}')]/../../td[{II}]";
     private static final String XPATH_COMPUTER_NAME_CELL = "//*[contains(@class,'computers')]//td[1]/a";
+    private static final String XPATH_EMPTY_MESSAGE = "//*[@class='well']/em";
 
 
     private BaseActionEditor editor;
@@ -49,5 +50,9 @@ public class DataGrid extends BasePage {
         return this.driver.findElements(By.xpath(XPATH_COMPUTER_NAME_CELL))
                 .stream().map(WebElement::getText).collect(Collectors.toList());
 
+    }
+
+    public String getEmptyMessage() {
+        return this.driver.findElement(By.xpath(XPATH_EMPTY_MESSAGE)).getText();
     }
 }

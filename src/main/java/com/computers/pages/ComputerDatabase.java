@@ -53,10 +53,10 @@ public class ComputerDatabase extends BasePage {
         return this.dataGrid;
     }
 
-    public boolean isMessageMatching(String text) {
+    public String getMessage() {
         return this.driver
                 .findElement(By.xpath(XPATH_ALERT))
-                .getText().equals(text);
+                .getText();
     }
 
 

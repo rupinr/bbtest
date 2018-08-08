@@ -2,6 +2,7 @@ package com.computers.component;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class BaseActionEditor {
@@ -14,7 +15,9 @@ public class BaseActionEditor {
     }
 
     public void editTextFieldById(String id, String text) {
-        driver.findElement(By.id(id)).sendKeys(text);
+        WebElement element = driver.findElement(By.id(id));
+        element.clear();
+        element.sendKeys(text);
     }
 
     public void clickOnElementById(String id) {
