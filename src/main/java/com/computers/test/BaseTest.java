@@ -1,7 +1,7 @@
 package com.computers.test;
 
 import com.computers.pages.ComputerDatabase;
-import com.computers.reporting.CustomTestReporter;
+import com.computers.reporting.ScreenShotReporter;
 import com.computers.support.TestProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Listeners;
 
-@Listeners(CustomTestReporter.class)
+@Listeners(ScreenShotReporter.class)
 public class BaseTest {
 
     protected TestProperties testProperties;

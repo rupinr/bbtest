@@ -1,6 +1,7 @@
 package com.computers.pages;
 
 import com.computers.component.BaseActionEditor;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ComputerDatabase extends BasePage {
@@ -11,6 +12,7 @@ public class ComputerDatabase extends BasePage {
     private static final String XPATH_NEXT = "//*[@class='next']/a";
     private static final String XPATH_PREVIOUS = "//*[@class='prev']/a";
     private static final String XPATH_CURRENT = "//*[@class='current']/a";
+    private static final String XPATH_ALERT = "//*[contains(@class,'alert-message')]";
 
     private BaseActionEditor editor;
     private DataGrid dataGrid;
@@ -18,7 +20,7 @@ public class ComputerDatabase extends BasePage {
     public ComputerDatabase(WebDriver driver) {
         super(driver);
         this.editor = new BaseActionEditor(driver);
-        this.dataGrid=new DataGrid(driver);
+        this.dataGrid = new DataGrid(driver);
     }
 
 
@@ -47,8 +49,14 @@ public class ComputerDatabase extends BasePage {
         return this;
     }
 
-    public DataGrid getDataGrid(){
+    public DataGrid getDataGrid() {
         return this.dataGrid;
+    }
+
+    public boolean isMessageMatching(String text) {
+        return this.driver
+                .findElement(By.xpath(XPATH_ALERT))
+                .getText().equals(text);
     }
 
 

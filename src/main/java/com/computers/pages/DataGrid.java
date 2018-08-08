@@ -3,6 +3,10 @@ package com.computers.pages;
 import com.computers.component.BaseActionEditor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.computers.locators.Replacements.I;
 import static com.computers.locators.Replacements.II;
@@ -11,6 +15,8 @@ public class DataGrid extends BasePage {
 
     private static final String XPATH_COMPUTER_BY_NAME = "//*[contains(@class,'computers')]//a[contains(text(),'{I}')]";
     private static final String XPATH_GENERIC_CELL_BY_COMPUTER_NAME = "//*[contains(@class,'computers')]//a[contains(text(),'{I}')]/../../td[{II}]";
+    private static final String XPATH_COMPUTER_NAME_CELL = "//*[contains(@class,'computers')]//td[1]/a";
+
 
     private BaseActionEditor editor;
 
@@ -24,18 +30,24 @@ public class DataGrid extends BasePage {
         return new EditComputer(driver);
     }
 
-    public boolean isIntroducedMatching(String computerName, String expected) {
+    public String getIntroducedByComputerName(String computerName) {
         String xpath = XPATH_GENERIC_CELL_BY_COMPUTER_NAME.replace(I, computerName).replace(II, "2");
-        return this.driver.findElement(By.xpath(xpath)).getText().equals(expected);
+        return this.driver.findElement(By.xpath(xpath)).getText();
     }
 
-    public boolean isDiscontinuedMatching(String computerName, String expected) {
+    public String getDiscontinuedByComputerName(String computerName) {
         String xpath = XPATH_GENERIC_CELL_BY_COMPUTER_NAME.replace(I, computerName).replace(II, "3");
-        return this.driver.findElement(By.xpath(xpath)).getText().equals(expected);
+        return this.driver.findElement(By.xpath(xpath)).getText();
     }
 
-    public boolean isCompanyMatching(String computerName, String expected) {
+    public String getByCompanyByComputerName(String computerName) {
         String xpath = XPATH_GENERIC_CELL_BY_COMPUTER_NAME.replace(I, computerName).replace(II, "4");
-        return this.driver.findElement(By.xpath(xpath)).getText().equals(expected);
+        return this.driver.findElement(By.xpath(xpath)).getText();
+    }
+
+    public List<String> getByComputerNames() {
+        return this.driver.findElements(By.xpath(XPATH_COMPUTER_NAME_CELL))
+                .stream().map(WebElement::getText).collect(Collectors.toList());
+
     }
 }

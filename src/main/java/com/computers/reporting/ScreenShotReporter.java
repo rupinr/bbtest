@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-public class CustomTestReporter implements ITestListener {
+public class ScreenShotReporter implements ITestListener {
 
     private TestProperties testProperties = TestProperties.getInstance();
 
