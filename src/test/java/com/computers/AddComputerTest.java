@@ -136,6 +136,11 @@ public class AddComputerTest extends ComputerHelper {
             this.isValidIntroduced = isValidIntroduced;
             this.isValidDiscontinued = isValidDiscontinued;
         }
+
+        @Override
+        public String toString() {
+            return computer.toString();
+        }
     }
 
 }

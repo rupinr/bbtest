@@ -16,7 +16,7 @@ public class ReportEnahncer implements IInvokedMethodListener {
         if (testCase != null) {
             Reporter.log(testCase.id());
             Reporter.log(testCase.desciption());
-            Reporter.log(testCase.priority());
+            Reporter.log(testCase.priority().toString());
         }
     }
 

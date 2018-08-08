@@ -64,4 +64,12 @@ public class Computer {
         }
     }
 
+    @Override
+    public String toString() {
+        return String.format("Computer Name %s, Introduced %s, Discontinued %s , Company %s",
+                this.computerName,
+                this.introduced,
+                this.discontinued,
+                this.company);
+    }
 }
