@@ -1,5 +1,5 @@
 # Read Me First
-* Eighter Chrome or Firefox should be installed in the system.
+* Either Chrome or Firefox should be installed in the system.
 * Download Chromedriver or GekhoDriver .
 * Place them in a directory and configure properties testconfiguration.properties
 * Make sure that maven is installed and added to path
