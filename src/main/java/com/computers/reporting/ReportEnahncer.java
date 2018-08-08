@@ -14,9 +14,9 @@ public class ReportEnahncer implements IInvokedMethodListener {
                 .getConstructorOrMethod().getMethod()
                 .getAnnotation(TestCase.class);
         if (testCase != null) {
-            Reporter.log(testCase.id());
-            Reporter.log(testCase.desciption());
-            Reporter.log(testCase.priority().toString());
+            Reporter.log("<h2> Test ID :"+testCase.id()+"</h2>");
+            Reporter.log("<h2> Description: "+testCase.desciption()+"</h2>");
+            Reporter.log("<h2> Priority: "+testCase.priority().toString()+"</h2>");
         }
     }
 

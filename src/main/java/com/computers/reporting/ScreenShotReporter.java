@@ -39,8 +39,10 @@ public class ScreenShotReporter implements ITestListener {
             }
             String fileName = UUID.randomUUID().toString();
             try {
-                FileUtils.copyFile(this.takeScreenShot(driver),
-                        new File(testProperties.getScreenshotDirectory() + "/" + fileName + ".png"));
+                File resultFile=new File(testProperties.getScreenshotDirectory() + "/" + fileName + ".png");
+                FileUtils.copyFile(this.takeScreenShot(driver), resultFile);
+                String path = "<img height=\"50%\" width=\"50%\" src=\"file://" + resultFile.getAbsolutePath() + "\" alt=\"Screenshot\"/>";
+                Reporter.log(path);
             } catch ( IOException e ) {
                 e.printStackTrace();
             }

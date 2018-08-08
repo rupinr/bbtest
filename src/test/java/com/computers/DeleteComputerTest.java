@@ -33,6 +33,6 @@ public class DeleteComputerTest extends ComputerHelper {
                 .deleteThisComputer().getMessage();
 
         Assert.assertEquals(message, "Done! Computer has been deleted");
-
+        
     }
 }
