@@ -16,7 +16,7 @@ public class AddOrEditComputer extends BasePage {
 
     private static final String XPATH_SUBMIT = "//*[@type='submit']";
     private static final String XPATH_CANCEL = "//*[@class='actions']/a[@class='btn']";
-    private static final String XPATH_COMMON_FILED = "//fieldset//input[@id='name']/../..";
+    private static final String XPATH_COMMON_FILED = "//fieldset//input[@id='{I}']/../..";
     private static final String CLASS_ERROR = "error";
 
     private BaseActionEditor editor;
@@ -111,7 +111,7 @@ public class AddOrEditComputer extends BasePage {
     }
 
     public boolean isErrorHighlightPresentForDiscontinued() {
-        return this.isErrorHighlightedByID(ID_INTRODUCED);
+        return this.isErrorHighlightedByID(ID_DISCONTINUED);
     }
 
     private boolean isErrorHighlightedByID(String id) {

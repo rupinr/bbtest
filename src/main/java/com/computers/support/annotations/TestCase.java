@@ -7,9 +7,9 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TestCase {
 
-    String testID() default "";
+    String ID() default "";
 
-    String testPriority() default "";
+    String priority() default "";
 
-    String testDesciption() default "";
+    String desciption() default "";
 }

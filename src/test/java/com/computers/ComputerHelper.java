@@ -8,9 +8,9 @@ public class ComputerHelper extends BaseTest {
 
     public void enterComputerDetails(Computer computer, AddOrEditComputer computerPage) {
         computerPage.editComputerName(computer.getComputerName())
-                .editIntroducedDate(computer.getDiscontinued())
-                .editIntroducedDate(computer.getDiscontinued())
-                .editComputerName(computer.getCompany());
+                .editDiscontinuedDate(computer.getDiscontinued())
+                .editIntroducedDate(computer.getIntroduced())
+                .selectCompany(computer.getCompany());
     }
 
 }

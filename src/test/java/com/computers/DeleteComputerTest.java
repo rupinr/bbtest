@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class DeleteComputerTest extends ComputerHelper {
 
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
     public void verifyThatUserIsAbleDeleteComputer() {
 
@@ -30,7 +30,7 @@ public class DeleteComputerTest extends ComputerHelper {
         String message = computerDatabase.getDataGrid().openComputerDetailsByNameopenComputerDetailsByName(computerName)
                 .deleteThisComputer().getMessage();
 
-        Assert.assertEquals(message, "Check MEssage");
+        Assert.assertEquals(message, "Done! Computer has been deleted");
         //Todo assertion that user is in main main.
 
     }

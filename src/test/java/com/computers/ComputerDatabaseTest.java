@@ -29,7 +29,7 @@ public class ComputerDatabaseTest extends BaseTest {
     @Test
     //TC Annotion..
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     public void verifyThatUserIsPresentedWithMultipleSearchResultsIfThereAreMoreThanOneMatchingEntry() {
         String toSearchComputerName = "Atari";
         ComputerDatabase computerDatabase = this.openBrowser()
@@ -49,7 +49,7 @@ public class ComputerDatabaseTest extends BaseTest {
                 .forEach(computerName -> Assert.assertTrue(computerName.contains(computerName)));
     }
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
     public void verifyThatFilterComputersAreNotCaseSensitive() {
         String upperCase = "ASC";
@@ -74,7 +74,7 @@ public class ComputerDatabaseTest extends BaseTest {
         Assert.assertEquals(upperCaseComputerNames, lowerCaseComputerNames);
     }
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
     public void verifyThatAMessageIsShownOnInvalidSearch() {
         String searchText = "THIS#$@#$COMPUTER";
@@ -89,7 +89,7 @@ public class ComputerDatabaseTest extends BaseTest {
 
     }
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
     public void verifyThatEmptyPropertiesAreDisplayedCorrectlyInGrid() {
         String computerName = "ASCI Thors Hammer";
@@ -104,7 +104,7 @@ public class ComputerDatabaseTest extends BaseTest {
         Assert.assertEquals(dataGrid.getDiscontinuedByComputerName(computerName), "-");
     }
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
     public void verifyHeaderTextForColumns() {
         DataGrid dataGrid = this.openBrowser()

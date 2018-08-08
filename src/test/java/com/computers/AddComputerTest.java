@@ -13,7 +13,7 @@ import static com.computers.data.ComputerDataValidity.*;
 
 public class AddComputerTest extends ComputerHelper {
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
     public void verifyAddAComputerPage() {
 
@@ -42,7 +42,7 @@ public class AddComputerTest extends ComputerHelper {
         Assert.assertTrue(computerDatabase.isInComputerDataPage());
     }
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
     public void verifyThatUserIsAbleToAddAComputer() {
         ComputerDatabase computerDatabase = this.openBrowser()
@@ -55,14 +55,14 @@ public class AddComputerTest extends ComputerHelper {
         addComputer.submit();
 
 
-        Assert.assertEquals(computerDatabase.getMessage(), "Check MEssage");
+        Assert.assertEquals(computerDatabase.getMessage(), "Done! Computer TEST_COMPUTERb73d8 has been created");
 
 
         Assert.assertTrue(computerDatabase.isInComputerDataPage());
 
     }
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test
     public void verifyThatUserIsAbleSearchAnAddedComputer() {
         ComputerDatabase computerDatabase = this.openBrowser()
@@ -82,7 +82,7 @@ public class AddComputerTest extends ComputerHelper {
 
     }
 
-    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @TestCase(ID = "SAMPLE00", priority = "HIGH", desciption = "NEW TESTCASE")
     @Test(dataProvider = "invalidComputerArray")
     public void verifyThatErrorMessageIsShownWhenUserTriesToAddComputerWIthInvalidData(ComputerData computerData) {
         ComputerDatabase computerDatabase = this.openBrowser()
@@ -110,9 +110,10 @@ public class AddComputerTest extends ComputerHelper {
     public Object[][] invalidComputerArray() {
 
         return new Object[][]{{
-                Computers.invalidDiscontinuedDate(), VALID_COMPUTERNAME, VALID_INTRODUCED, INVALID_DISCONTINUED},
-                {Computers.invalidIntroducedDate(), VALID_COMPUTERNAME, INVALID_INTRODUCED, VALID_DISCONTINUED},
-                {Computers.allInvalid(), INVALID_COMPUTERNAME, INVALID_INTRODUCED, INVALID_DISCONTINUED}};
+                new ComputerData(Computers.invalidDiscontinuedDate(), VALID_COMPUTERNAME, VALID_INTRODUCED, INVALID_DISCONTINUED)},
+                {new ComputerData(Computers.invalidIntroducedDate(), VALID_COMPUTERNAME, INVALID_INTRODUCED, VALID_DISCONTINUED)},
+                {new ComputerData(Computers.allInvalid(), INVALID_COMPUTERNAME, INVALID_INTRODUCED, INVALID_DISCONTINUED)}
+                , {new ComputerData(Computers.invalidComputerName(), INVALID_COMPUTERNAME, VALID_INTRODUCED, VALID_DISCONTINUED)}};
 
     }
 
@@ -122,6 +123,13 @@ public class AddComputerTest extends ComputerHelper {
         boolean isValidComputerName;
         boolean isValidIntroduced;
         boolean isValidDiscontinued;
+
+        private ComputerData(Computer computer, boolean isValidComputerName, boolean isValidIntroduced, boolean isValidDiscontinued) {
+            this.computer = computer;
+            this.isValidComputerName = isValidComputerName;
+            this.isValidIntroduced = isValidIntroduced;
+            this.isValidDiscontinued = isValidDiscontinued;
+        }
     }
 
 }

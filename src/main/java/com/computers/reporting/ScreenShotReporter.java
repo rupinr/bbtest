@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,6 +34,9 @@ public class ScreenShotReporter implements ITestListener {
     public void onTestFailure(ITestResult iTestResult) {
         if (testProperties.getTakeScreenShot()) {
             WebDriver driver = extractWebDriver(iTestResult);
+            if(driver==null){
+                Reporter.log("Driver is not initialized. Unable to capture screenshot");
+            }
             String fileName = UUID.randomUUID().toString();
             try {
                 FileUtils.copyFile(this.takeScreenShot(driver),

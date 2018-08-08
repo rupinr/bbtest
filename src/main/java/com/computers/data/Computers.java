@@ -11,7 +11,7 @@ public class Computers {
                 .withComputerName("TEST_COMPUTER" + UUID.randomUUID().toString().substring(0, 5))
                 .withIntroduced("1998-10-10")
                 .withDiscontinued("2010-10-10")
-                .withComputerName("IBM")
+                .withCompany("IBM")
                 .build();
     }
 
@@ -20,7 +20,7 @@ public class Computers {
                 .withComputerName("TEST_COMPUTER" + UUID.randomUUID().toString().substring(0, 5))
                 .withIntroduced("1998-99-10")
                 .withDiscontinued("2010-10-10")
-                .withComputerName("IBM")
+                .withCompany("IBM")
                 .build();
     }
 
@@ -29,16 +29,16 @@ public class Computers {
                 .withComputerName("TEST_COMPUTER" + UUID.randomUUID().toString().substring(0, 5))
                 .withIntroduced("1998-10-10")
                 .withDiscontinued("2010-99-99")
-                .withComputerName("IBM")
+                .withCompany("IBM")
                 .build();
     }
 
-    public static Computer emptyComputerName() {
+    public static Computer invalidComputerName() {
         return new Computer.ComputerBuilder()
                 .withComputerName("")
                 .withIntroduced("1998-10-10")
                 .withDiscontinued("2010-10-05")
-                .withComputerName("IBM")
+                .withCompany("IBM")
                 .build();
     }
 
@@ -47,7 +47,7 @@ public class Computers {
                 .withComputerName("")
                 .withIntroduced("1999-99-99")
                 .withDiscontinued("2010-99-99")
-                .withComputerName("IBM")
+                .withCompany("IBM")
                 .build();
     }
 
