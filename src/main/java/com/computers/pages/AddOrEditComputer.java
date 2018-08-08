@@ -63,7 +63,7 @@ public class AddOrEditComputer extends BasePage {
     }
 
     private String getHelpText(String id) {
-        return driver.findElement(By.xpath(XPATH_COMMON_LABEL_BY_ID.replace(I, id))).getText();
+        return driver.findElement(By.xpath(XPATH_COMMON_HELP_TEXT_BY_ID.replace(I, id))).getText();
     }
 
     public String getComputerNameLabel() {

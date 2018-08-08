@@ -25,9 +25,9 @@ public class AddComputerTest extends ComputerHelper {
 
 
         Assert.assertEquals(addComputer.getComputerNameLabel(), "Computer name");
-        Assert.assertEquals(addComputer.getCompanyLabel(), "Introduced date");
-        Assert.assertEquals(addComputer.getIntroducedLabel(), "Discontinued date");
-        Assert.assertEquals(addComputer.getDiscontinuedLabel(), "Company");
+        Assert.assertEquals(addComputer.getCompanyLabel(), "Company");
+        Assert.assertEquals(addComputer.getIntroducedLabel(), "Introduced date");
+        Assert.assertEquals(addComputer.getDiscontinuedLabel(), "Discontinued date");
 
 
         Assert.assertEquals(addComputer.getComputerNameHelpText(), "Required");
