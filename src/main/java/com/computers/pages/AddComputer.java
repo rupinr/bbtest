@@ -13,5 +13,9 @@ public class AddComputer extends AddOrEditComputer {
         return this.submit();
     }
 
+    public boolean isCreateThisComputerDislpayed(){
+        return this.isSubmitDisplayed();
+    }
+
 
 }

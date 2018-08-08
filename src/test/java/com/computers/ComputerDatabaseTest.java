@@ -17,7 +17,8 @@ public class ComputerDatabaseTest extends BaseTest {
 
     public void verifyThatUserIsPresentedWithSearchResultsForAValidQuery() {
         String computerName = "Atari ST";
-        DataGrid dataGrid = this.getComputerDataBaseHome().editFilterByName(computerName)
+        DataGrid dataGrid = this.openBrowser()
+                .loadComputerDataBaseHome().editFilterByName(computerName)
                 .clickOnFilterByName()
                 .getDataGrid();
         Assert.assertEquals(dataGrid.getByCompanyByComputerName(computerName), "Atari");
@@ -31,7 +32,8 @@ public class ComputerDatabaseTest extends BaseTest {
     @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
     public void verifyThatUserIsPresentedWithMultipleSearchResultsIfThereAreMoreThanOneMatchingEntry() {
         String toSearchComputerName = "Atari";
-        ComputerDatabase computerDatabase = this.getComputerDataBaseHome()
+        ComputerDatabase computerDatabase = this.openBrowser()
+                .loadComputerDataBaseHome()
                 .editFilterByName(toSearchComputerName)
                 .clickOnFilterByName();
 
@@ -52,7 +54,8 @@ public class ComputerDatabaseTest extends BaseTest {
     public void verifyThatFilterComputersAreNotCaseSensitive() {
         String upperCase = "ASC";
         String lowerCase = "asc";
-        ComputerDatabase computerDatabase = this.getComputerDataBaseHome();
+        ComputerDatabase computerDatabase = this.openBrowser()
+                .loadComputerDataBaseHome();
 
         List<String> upperCaseComputerNames =
                 computerDatabase
@@ -75,13 +78,45 @@ public class ComputerDatabaseTest extends BaseTest {
     @Test
     public void verifyThatAMessageIsShownOnInvalidSearch() {
         String searchText = "THIS#$@#$COMPUTER";
-        String  message = this.getComputerDataBaseHome()
-                        .editFilterByName(searchText)
-                        .clickOnFilterByName()
+        String message = this.openBrowser()
+                .loadComputerDataBaseHome()
+                .editFilterByName(searchText)
+                .clickOnFilterByName()
                 .getDataGrid()
                 .getEmptyMessage();
 
-        Assert.assertEquals(message,"Nothing to display");
+        Assert.assertEquals(message, "Nothing to display");
 
-          }
+    }
+
+    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @Test
+    public void verifyThatEmptyPropertiesAreDisplayedCorrectlyInGrid() {
+        String computerName = "ASCI Thors Hammer";
+        DataGrid dataGrid = this.openBrowser()
+                .loadComputerDataBaseHome()
+                .editFilterByName(computerName)
+                .clickOnFilterByName()
+                .getDataGrid();
+
+        Assert.assertEquals(dataGrid.getByCompanyByComputerName(computerName), "-");
+        Assert.assertEquals(dataGrid.getIntroducedByComputerName(computerName), "-");
+        Assert.assertEquals(dataGrid.getDiscontinuedByComputerName(computerName), "-");
+    }
+
+    @TestCase(testID = "SAMPLE00", testPriority = "HIGH", testDesciption = "NEW TESTCASE")
+    @Test
+    public void verifyHeaderTextForColumns() {
+        DataGrid dataGrid = this.openBrowser()
+                .loadComputerDataBaseHome()
+                .getDataGrid();
+
+        Assert.assertEquals(dataGrid.getComputerNameHeader(), "Computer name");
+        Assert.assertEquals(dataGrid.getIntroducedHeader(), "Introduced");
+        Assert.assertEquals(dataGrid.getDiscontinuedHeader(), "Discontinued");
+        Assert.assertEquals(dataGrid.getCompanyHeader(), "Company");
+
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.computers.pages;
 
 import com.computers.component.BaseActionEditor;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class ComputerDatabase extends BasePage {
@@ -13,6 +14,7 @@ public class ComputerDatabase extends BasePage {
     private static final String XPATH_PREVIOUS = "//*[@class='prev']/a";
     private static final String XPATH_CURRENT = "//*[@class='current']/a";
     private static final String XPATH_ALERT = "//*[contains(@class,'alert-message')]";
+    private static final String XPATH_COMPUTER_TABLE = "//table[contains(@class,'computers')]";
 
     private BaseActionEditor editor;
     private DataGrid dataGrid;
@@ -57,6 +59,16 @@ public class ComputerDatabase extends BasePage {
         return this.driver
                 .findElement(By.xpath(XPATH_ALERT))
                 .getText();
+    }
+
+    public boolean isInComputerDataPage() {
+        boolean returnValue = false;
+        try {
+            returnValue = this.driver.findElement(By.xpath(XPATH_COMPUTER_TABLE)).isDisplayed();
+        } catch ( NoSuchElementException nse ) {
+
+        }
+        return returnValue;
     }
 
 

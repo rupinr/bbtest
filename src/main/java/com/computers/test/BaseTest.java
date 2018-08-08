@@ -20,8 +20,13 @@ public class BaseTest {
         testProperties = TestProperties.getInstance();
     }
 
-    public ComputerDatabase getComputerDataBaseHome() {
+    public BaseTest openBrowser() {
         driver = createWebDriver();
+        return this;
+    }
+
+    public ComputerDatabase loadComputerDataBaseHome() {
+
         this.driver.get(testProperties.getHomePageURL());
         return new ComputerDatabase(driver);
     }
