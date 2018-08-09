@@ -6,7 +6,7 @@ import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-public class ReportEnahncer implements IInvokedMethodListener {
+public class ReportEnhancer implements IInvokedMethodListener {
     @Override
     public void beforeInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
 

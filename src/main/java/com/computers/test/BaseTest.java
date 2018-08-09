@@ -1,7 +1,7 @@
 package com.computers.test;
 
 import com.computers.pages.ComputerDatabase;
-import com.computers.reporting.ReportEnahncer;
+import com.computers.reporting.ReportEnhancer;
 import com.computers.reporting.ScreenShotReporter;
 import com.computers.support.TestProperties;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 
-@Listeners({ScreenShotReporter.class, ReportEnahncer.class})
+@Listeners({ScreenShotReporter.class, ReportEnhancer.class})
 public class BaseTest {
 
     protected TestProperties testProperties;
